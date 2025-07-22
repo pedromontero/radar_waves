@@ -3,7 +3,6 @@ from datetime import datetime
 import json
 from collections import OrderedDict
 import psycopg2
-import numpy as np
 import pandas as pd
 
 
