@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="654aec51-94e2-4f84-949d-d56656ab7f93" name="Changes" comment="" />
+    <list default="true" id="654aec51-94e2-4f84-949d-d56656ab7f93" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/waves.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/waves.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insert_rings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/radarhf_waves.py" beforeDir="false" afterPath="$PROJECT_DIR$/radarhf_waves.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/FIST_2PG.cpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/FIST_2PG.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/FIST_2PG.prj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/FIST_2PG.qmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/FIST_2PG.shp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/FIST_2PG.shx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/PRIO_2PG.cpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/PRIO_2PG.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/PRIO_2PG.prj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/PRIO_2PG.qmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/PRIO_2PG.shp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/PRIO_2PG.shx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/SILL_2PG.cpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/SILL_2PG.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/SILL_2PG.prj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/SILL_2PG.qmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/SILL_2PG.shp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/SILL_2PG.shx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/VILA_2PG.cpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/VILA_2PG.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/VILA_2PG.prj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/VILA_2PG.qmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/VILA_2PG.shp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rings/VILA_2PG.shx" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +42,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/pedromontero/radar_waves",
+    "accountId": "46203f22-1b30-42e4-958a-eaef819f345d"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8
 }]]></component>
@@ -20,10 +58,47 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.waves2db.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\UsrXModel1\OneDrive - INTECMAR\02_TRABALLO\02_PYTHON\UMO_TOOLS\codar2nc\waves" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="waves2db" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="waves" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/waves2db.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.waves2db" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
