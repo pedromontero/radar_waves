@@ -67,40 +67,76 @@ class Wave:
     def _parse_tables(self, content_raw: list):
         """
         Encuentra y procesa cada bloque de tabla en el fichero.
+        Esta versión definitiva lee primero la cabecera global del fichero y luego
+        procesa los bloques de datos, haciéndola compatible con ambos formatos.
         """
+        # --- PASO 1: Encontrar la cabecera de columnas global para todo el fichero ---
+        global_header = []
+        for line in content_raw:
+            if '%TableColumnTypes:' in line:
+                global_header = line.split(':', 1)[1].split()
+                break  # Dejamos de buscar una vez encontrada
+
+        if not global_header:
+            print(f"AVISO: No se encontró la línea '%TableColumnTypes:' en el fichero. No se puede procesar.")
+            return
+
+        # --- PASO 2: Encontrar todos los bloques de datos (%TableStart ... %TableEnd) ---
         table_blocks = []
         current_block = []
         in_block = False
         for line in content_raw:
             if line.startswith('%TableStart'):
                 in_block = True
-            if in_block:
-                current_block.append(line)
+                # Reiniciamos el bloque actual justo después de encontrar la marca de inicio
+                current_block = []
+                continue # No incluimos la línea %TableStart en el bloque
             if line.startswith('%TableEnd'):
                 in_block = False
                 table_blocks.append(current_block)
-                current_block = []
+            if in_block:
+                current_block.append(line)
 
+        if not table_blocks:
+            print("AVISO: No se encontraron bloques de datos (%TableStart/%TableEnd) en el fichero.")
+            return
+
+        # --- PASO 3: Iterar sobre cada bloque de datos encontrado ---
         for block in table_blocks:
             range_cell = -1
-            header = []
             data_str = ""
 
+            # Dentro del bloque, buscamos el RangeCell (para Formato A) y las líneas de datos
             for line in block:
-                if 'RangeCell:' in line:
-                    range_cell = int(line.split(':')[1].strip())
-                elif '%TableColumnTypes:' in line:
-                    header = line.split(':', 1)[1].split()
+                if 'RangeCell:' in line and line.strip().startswith('%'):
+                    try:
+                        range_cell = int(line.split(':')[1].strip())
+                    except (ValueError, IndexError):
+                        print(f"AVISO: No se pudo leer el número de RangeCell en la línea: {line}")
+                        range_cell = -1
                 elif not line.startswith('%'):
                     data_str += line + '\n'
 
-            if range_cell != -1 and header and data_str:
-                # Usamos pd.read_csv sobre un string, es mucho más rápido y robusto
-                df = pd.read_csv(io.StringIO(data_str), sep=r'\s+', header=None, names=header, na_values='999.00')
-                self.data_tables[range_cell] = df
+            if not data_str:
+                continue
+
+            # Usamos la cabecera global que encontramos en el PASO 1
+            df_block = pd.read_csv(io.StringIO(data_str), sep=r'\s+', header=None, names=global_header, na_values='999.00')
+
+            # --- Lógica de decisión para asignar los datos ---
+            if range_cell != -1: # Formato A: El RangeCell se especificó dentro del bloque
+                self.data_tables[range_cell] = df_block
+            elif 'RCLL' in df_block.columns: # Formato B: El RangeCell es una columna en los datos
+                df_block.dropna(subset=['RCLL'], inplace=True)
+                if df_block.empty:
+                    continue
+                df_block['RCLL'] = df_block['RCLL'].astype(int)
+                for rc_num, group_df in df_block.groupby('RCLL'):
+                    self.data_tables[rc_num] = group_df.copy()
+            else:
+                print("AVISO: El bloque de tabla se omitirá (no contiene '% RangeCell:' ni columna 'RCLL').")
 
         if self.data_tables:
-            # Guarda la cabecera de la primera tabla como referencia
             first_key = next(iter(self.data_tables))
             self.headers = list(self.data_tables[first_key].columns)
 
@@ -212,7 +248,7 @@ def wave2db(site_name, path, file_in):
                         if pd.isna(height) or pd.isna(current_date) or pd.isna(period) or pd.isna(direction):
                             continue
 
-                        print(f'Range = {rcell_number}: date: {current_date} ---> ({height}, {period}, {direction})')
+                       # print(f'Range = {rcell_number}: date: {current_date} ---> ({height}, {period}, {direction})')
 
                         date_sql = current_date.strftime('%Y-%m-%d %H:%M:00.00')
 

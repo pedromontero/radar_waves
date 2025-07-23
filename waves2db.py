@@ -76,7 +76,7 @@ if __name__ == '__main__':
     create_station_directories(root)
 
     # 2. Descargar los ficheros (ahora no fallará por falta de directorios)
-    getradarfiles.get_waves_files(STATIONS, root)
+    getradarfiles.get_waves_files(STATIONS, root, number_of_last_files=3)
 
     # 3. Procesar TODOS los ficheros descargados
     waves2db(root)

@@ -73,7 +73,7 @@ def download_files(local_dir, remote_path, sftp, signature, number_files):
             files = files
         else:
             files = files[-1*number_files:]
-            print(files)
+
         for file in files:
             print(f'Atopei o ficheiro {file} no cartafol {path}')
             if file.split('.')[-1] == signature:
